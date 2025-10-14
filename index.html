@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Game Arcade Center</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎮 Game Arcade Center</h1>
+            <p>Choose your favorite game and have fun!</p>
+        </div>
+
+        <!-- Game Menu -->
+        <div id="gameMenu" class="game-menu">
+            <div class="game-card" onclick="showGame('rps')">
+                <div class="icon">✊✋✌️</div>
+                <h3>Rock Paper Scissors</h3>
+                <p>Classic hand game</p>
+            </div>
+            <div class="game-card" onclick="showGame('guess')">
+                <div class="icon">🎯</div>
+                <h3>Guess the Number</h3>
+                <p>Test your intuition</p>
+            </div>
+            <div class="game-card" onclick="showGame('memory')">
+                <div class="icon">🧠</div>
+                <h3>Memory Match</h3>
+                <p>Find the pairs</p>
+            </div>
+            <div class="game-card" onclick="showGame('tictactoe')">
+                <div class="icon">⭕❌</div>
+                <h3>Tic Tac Toe</h3>
+                <p>Classic strategy game</p>
+            </div>
+            <div class="game-card" onclick="showGame('dice')">
+                <div class="icon">🎲</div>
+                <h3>Dice Battle</h3>
+                <p>Roll and compete</p>
+            </div>
+        </div>
+
+        <!-- Rock Paper Scissors Game -->
+        <div id="rpsGame" class="game-container">
+            <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+            <h2 class="game-title">✊ Rock Paper Scissors ✌️</h2>
+            
+            <div class="score-board">
+                <div class="score-item">
+                    <div class="label">You</div>
+                    <div class="value" id="rpsPlayerScore">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="label">Draws</div>
+                    <div class="value" id="rpsDrawScore">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="label">Computer</div>
+                    <div class="value" id="rpsComputerScore">0</div>
+                </div>
+            </div>
+
+            <div class="rps-choices">
+                <button class="choice-btn" onclick="playRPS('rock')">🪨</button>
+                <button class="choice-btn" onclick="playRPS('paper')">📄</button>
+                <button class="choice-btn" onclick="playRPS('scissors')">✂️</button>
+            </div>
+
+            <div class="game-result" id="rpsResult"></div>
+        </div>
+
+        <!-- Guess the Number Game -->
+        <div id="guessGame" class="game-container">
+            <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+            <h2 class="game-title">🎯 Guess the Number (1-100)</h2>
+            
+            <div class="score-board">
+                <div class="score-item">
+                    <div class="label">Attempts</div>
+                    <div class="value" id="guessAttempts">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="label">Best Score</div>
+                    <div class="value" id="guessBest">-</div>
+                </div>
+            </div>
+
+            <input type="number" class="guess-input" id="guessInput" min="1" max="100" placeholder="Enter your guess...">
+            <button class="guess-btn" onclick="makeGuess()">Guess!</button>
+            <div class="hint" id="guessHint">Make your first guess!</div>
+            <button class="restart-btn" onclick="restartGuess()">New Game</button>
+        </div>
+
+        <!-- Memory Match Game -->
+        <div id="memoryGame" class="game-container">
+            <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+            <h2 class="game-title">🧠 Memory Match</h2>
+            
+            <div class="score-board">
+                <div class="score-item">
+                    <div class="label">Moves</div>
+                    <div class="value" id="memoryMoves">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="label">Matches</div>
+                    <div class="value" id="memoryMatches">0</div>
+                </div>
+            </div>
+
+            <div class="memory-grid" id="memoryGrid"></div>
+            <button class="restart-btn" onclick="restartMemory()">New Game</button>
+        </div>
+
+        <!-- Tic Tac Toe Game -->
+        <div id="tictactoeGame" class="game-container">
+            <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+            <h2 class="game-title">⭕ Tic Tac Toe ❌</h2>
+            
+            <div class="score-board">
+                <div class="score-item">
+                    <div class="label">You (X)</div>
+                    <div class="value" id="tttPlayerScore">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="label">Draws</div>
+                    <div class="value" id="tttDrawScore">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="label">Computer (O)</div>
+                    <div class="value" id="tttComputerScore">0</div>
+                </div>
+            </div>
+
+            <div class="ttt-grid" id="tttGrid"></div>
+            <div class="game-result" id="tttResult"></div>
+            <button class="restart-btn" onclick="restartTTT()">New Game</button>
+        </div>
+
+        <!-- Dice Battle Game -->
+        <div id="diceGame" class="game-container">
+            <button class="back-btn" onclick="backToMenu()">← Back to Menu</button>
+            <h2 class="game-title">🎲 Dice Battle</h2>
+            
+            <div class="score-board">
+                <div class="score-item">
+                    <div class="label">You</div>
+                    <div class="value" id="dicePlayerScore">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="label">Ties</div>
+                    <div class="value" id="diceTieScore">0</div>
+                </div>
+                <div class="score-item">
+                    <div class="label">Computer</div>
+                    <div class="value" id="diceComputerScore">0</div>
+                </div>
+            </div>
+
+            <div class="dice-container">
+                <div>
+                    <p style="text-align: center; margin-bottom: 10px; font-weight: bold;">Your Dice</p>
+                    <div class="dice" id="playerDice">🎲</div>
+                </div>
+                <div>
+                    <p style="text-align: center; margin-bottom: 10px; font-weight: bold;">Computer Dice</p>
+                    <div class="dice" id="computerDice">🎲</div>
+                </div>
+            </div>
+
+            <button class="roll-btn" onclick="rollDice()">Roll Dice!</button>
+            <div class="game-result" id="diceResult"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
