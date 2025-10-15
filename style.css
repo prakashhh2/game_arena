@@ -1,3 +1,4 @@
+/* Reset + Base */
 * {
     margin: 0;
     padding: 0;
@@ -29,6 +30,7 @@ body {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
+/* === Game Menu === */
 .game-menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -61,6 +63,7 @@ body {
     margin-bottom: 10px;
 }
 
+/* === Game Containers === */
 .game-container {
     display: none;
     background: rgba(255, 255, 255, 0.95);
@@ -91,7 +94,7 @@ body {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
-/* Rock Paper Scissors Styles */
+/* === Rock Paper Scissors === */
 .rps-choices {
     display: flex;
     justify-content: center;
@@ -129,6 +132,7 @@ body {
     animation: bounce 0.5s;
 }
 
+/* === Scoreboard === */
 .score-board {
     display: flex;
     justify-content: space-around;
@@ -153,7 +157,7 @@ body {
     color: #333;
 }
 
-/* Guess Number Styles */
+/* === Guess Number === */
 .guess-input {
     width: 100%;
     padding: 15px;
@@ -188,7 +192,7 @@ body {
     font-weight: bold;
 }
 
-/* Memory Game Styles */
+/* === Memory Game === */
 .memory-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -224,7 +228,7 @@ body {
     pointer-events: none;
 }
 
-/* Tic Tac Toe Styles */
+/* === Tic Tac Toe === */
 .ttt-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -255,7 +259,7 @@ body {
     opacity: 0.8;
 }
 
-/* Dice Game Styles */
+/* === Dice Game === */
 .dice-container {
     display: flex;
     justify-content: center;
@@ -297,20 +301,49 @@ body {
     transform: scale(1.05);
 }
 
+/* === "More Games Coming Soon" Section === */
+#MoreGameSect {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 60px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: fadeIn 1s ease-in-out;
+}
+
+#MoreGameSect.active {
+    display: flex;
+}
+
+#MoreGameSect .game-title {
+    font-size: 2.5em;
+    color: #764ba2;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 1px 2px 8px rgba(102, 126, 234, 0.4);
+    animation: pulse 2s infinite;
+}
+
+#MoreGameSect::after {
+    content: "🎮 New adventures are loading...";
+    color: #667eea;
+    font-size: 1.3em;
+    font-style: italic;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* === Animations === */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
 
 @keyframes slideIn {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes bounce {
@@ -323,6 +356,17 @@ body {
     100% { transform: rotate(360deg); }
 }
 
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+}
+
+/* === General === */
 .game-title {
     text-align: center;
     color: #333;
@@ -349,29 +393,29 @@ body {
     transform: scale(1.05);
 }
 
-/* Responsive Design */
+/* === Responsive === */
 @media (max-width: 768px) {
     .header h1 {
         font-size: 2em;
     }
-    
+
     .game-card .icon {
         font-size: 3em;
     }
-    
+
     .choice-btn {
         padding: 20px;
         font-size: 2em;
     }
-    
+
     .game-result {
         font-size: 1.5em;
     }
-    
+
     .memory-grid {
         max-width: 350px;
     }
-    
+
     .memory-card {
         font-size: 2em;
     }
